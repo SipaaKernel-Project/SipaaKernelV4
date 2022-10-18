@@ -1,4 +1,3 @@
-![Anglais](https://github.com/RaphMar2021/SipaaKernelV4/blob/master/README.md) Français
 
 # SipaaKernel V4
 Une nouvelle version de SipaaKernel, en mieux
@@ -20,3 +19,5 @@ Cette version de SipaaKernel utilise le canvas VBE de @terminal-cs!
 Cette version de SipaaKernel est en pré-alpha
 
 OK, ca fonctionne sur du matériel réel, mais NE L'UTILISER PAS EN TANT QUE SYSTEME D'EXPLOITATION PRINCIPAL.
+
+[1]: URL "https://github.com/RaphMar2021/SipaaKernelV4/blob/master/README.md"
