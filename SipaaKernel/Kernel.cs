@@ -80,9 +80,6 @@ namespace SipaaKernel
 
             // Play the startup sound
             //Play(MemoryAudioStream.FromWave(Assets.StartupWave));
-
-            // Just a test commit
-
         }
 
         protected override void Run()
