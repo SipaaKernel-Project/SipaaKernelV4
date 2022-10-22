@@ -68,7 +68,7 @@ namespace SipaaKernel
         public static void SKCPUException(string lastKnownAddress, string ctxInterrupt, string ctxInterruptDescription)
         {
             g.Clear();
-            g.DrawString(10, 10, "SipaaKernel V4 (CONFIDENTIAL BUILD)", Font.Default, Color.White);
+            g.DrawString(10, 10, "SipaaKernel V4", Font.Default, Color.White);
             g.DrawString(10, 24, "Version 22.10.", Font.Default, Color.White);
             g.DrawString(10, 36, "CPU Exception", Font.Default, Color.White);
             g.DrawString(10, 48, $"It seems than your {CPU.GetCPUBrandString()} have encountred an problem...", Font.Default, Color.White);
