@@ -13,9 +13,15 @@ namespace SipaaKernel.UI.Widgets
         public override void OnDraw(FrameBuffer Buffer)
         {
             FrameBuffer buf = RenderWidget();
-            buf.DrawString((int)this.Width / 2, (int)this.Height / 2, Text, Font.Default, Color.White, true);
+            if (IsAccentued)
+            {
+                buf.DrawString((int)this.Width / 2, (int)this.Height / 2, Text, Font.Default, Theme.GetAccentForegroundColor(), true);
+            }
+            else
+            {
+                buf.DrawString((int)this.Width / 2, (int)this.Height / 2, Text, Font.Default, Theme.GetForegroundColor(), true);
+            }
             Buffer.DrawImage((int)X, (int)Y, buf);
         }
-
     }
 }

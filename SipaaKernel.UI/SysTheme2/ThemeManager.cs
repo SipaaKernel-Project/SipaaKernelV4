@@ -8,7 +8,7 @@ namespace SipaaKernel.UI.SysTheme2
 {
     public class ThemeManager
     {
-        private static Theme CurrentTheme;
+        private static Theme CurrentTheme = new Themes.DarkTheme();
 
         public static Theme GetCurrentTheme()
         {

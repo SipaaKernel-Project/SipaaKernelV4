@@ -52,7 +52,7 @@ namespace SipaaKernel
     {
         public static FrameBuffer g;
         public static TopBar topBar;
-        Widget w;
+        Button w;
         protected override void BeforeRun()
         {
             // Show boot screen
@@ -64,10 +64,11 @@ namespace SipaaKernel
             //InitializeAudio();
 
             // Init some widgets
-            w = new Widget();
+            w = new Button();
             w.X = 100;
             w.Y = 100;
-
+            w.IsAccentued = true;
+            w.HasBorder = true;
             // Init the mouse
             Sys.MouseManager.ScreenWidth = VBE.getModeInfo().width;
             Sys.MouseManager.ScreenHeight = VBE.getModeInfo().height;
@@ -76,8 +77,8 @@ namespace SipaaKernel
             topBar = new TopBar();
 
             // Resize the wallpaper to the canvas resolution
-            Assets.Wallpaper = Assets.Wallpaper.Resize(g.Width, g.Height);
-
+            Assets.Wallpaper = Assets.Wallpaper.Scale(g.Width, g.Height);
+            
             // Play the startup sound
             //Play(MemoryAudioStream.FromWave(Assets.StartupWave));
         }

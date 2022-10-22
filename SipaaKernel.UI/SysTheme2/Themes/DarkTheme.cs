@@ -12,19 +12,22 @@ namespace SipaaKernel.UI.SysTheme2.Themes
         protected override ColorDictionnary InitColorDictionnary()
         {
             ColorDictionnary cd = new ColorDictionnary();
-            cd.AccentIdle = Color.FromHex("0066ff");
-            cd.AccentHover = Color.FromHex("1874ff");
-            cd.AccentHover = Color.FromHex("2e81ff");
-            cd.AccentForeground = Color.FromHex("ffffff");
+            cd.AccentIdle = Color.FromARGB(255, 73, 9, 158);
+            cd.AccentHover = Color.FromARGB(255, 57, 7, 122);
+            cd.AccentHover = Color.FromARGB(255, 39, 6, 82);
+            cd.AccentForeground = Color.White;
 
-            cd.WidgetIdle = Color.FromHex("18181b");
-            cd.WidgetHover = Color.FromHex("424245");
-            cd.WidgetClicked = Color.FromHex("2e2e31");
+            cd.WidgetIdle = Color.FromARGB(255, 33,33,33);
+            cd.WidgetHover = Color.FromARGB(255, 26, 26, 26);
+            cd.WidgetClicked = Color.FromARGB(255, 20, 20, 20);
 
             cd.WindowBackground = Color.FromARGB(255, 12, 12, 12);
             cd.Component = Color.FromARGB(255, 32, 32, 32);
 
             cd.Foreground = Color.FromARGB(255, 32, 32, 32);
+
+            this.BorderRadius = 0;
+            this.CenterWindowTitle = false;
 
             return cd;
         }

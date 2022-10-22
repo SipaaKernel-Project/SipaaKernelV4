@@ -12,7 +12,6 @@ namespace SipaaKernel.UI.SysTheme2
         #region Properties
         protected ColorDictionnary ColorDictionnary;
         protected int BorderRadius = 0;
-        protected int BorderWeight = 0;
         protected bool CenterWindowTitle = false;
 
         protected abstract ColorDictionnary InitColorDictionnary();
@@ -74,10 +73,6 @@ namespace SipaaKernel.UI.SysTheme2
         public int GetBorderRadius()
         {
             return BorderRadius;
-        }
-        public int GetBorderWeight()
-        {
-            return BorderWeight;
         }
         public bool IsWindowTitleCentered()
         {
