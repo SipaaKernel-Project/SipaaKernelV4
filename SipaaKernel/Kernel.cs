@@ -40,11 +40,7 @@ namespace SipaaKernel
                 lastsknowaddress = lastsknowaddress + xHex[(int)(lastKnownAddressValue & 0xF)];
             }
 
-            Kernel.g.DrawString(10, 10, "SipaaKernel CPU Exception", Font.Default, Color.White);
-            Kernel.g.DrawString(10, 25, ctxinterrupt + " : " + aDescription, Font.Default, Color.White);
-            Kernel.g.DrawString(10, 40, "Last known address : " + lastsknowaddress, Font.Default, Color.White);
-            Kernel.g.DrawString(10, 55, "We are sorry than that happened." + lastsknowaddress, Font.Default, Color.White);
-            Kernel.g.CopyTo((uint*)VBE.getLfbOffset());
+            Kernel.SKCPUException(lastsknowaddress, ctxinterrupt, aDescription);
         }
     }
 
@@ -53,6 +49,38 @@ namespace SipaaKernel
         public static FrameBuffer g;
         public static TopBar topBar;
         Button w;
+
+        #region Some API functions
+        public static void SKPanic(uint error, string description)
+        {
+            g.Clear();
+            g.DrawString(10, 10, "SipaaKernel V4 (CONFIDENTIAL BUILD)", Font.Default, Color.White);
+            g.DrawString(10, 24, "Version 22.10.", Font.Default, Color.White);
+            g.DrawString(10, 36, "Kernel Panic", Font.Default, Color.White);
+            g.DrawString(10, 48, "It seems than SipaaKernel have encountred an error...", Font.Default, Color.White);
+            g.DrawString(10, 60, description, Font.Default, Color.White);
+            g.DrawString(10, 72, "We are sorry for this exception.", Font.Default, Color.White);
+            g.DrawString(10, 100, "Technical information : ", Font.Default, Color.White);
+            g.DrawString(10, 112, "Error Code : " + error, Font.Default, Color.White);
+            g.DrawString(10, 124, "Frames before the kernel panic : " + g.TotalFrames, Font.Default, Color.White); 
+            g.CopyTo((uint*)VBE.getLfbOffset());
+        }
+        public static void SKCPUException(string lastKnownAddress, string ctxInterrupt, string ctxInterruptDescription)
+        {
+            g.Clear();
+            g.DrawString(10, 10, "SipaaKernel V4 (CONFIDENTIAL BUILD)", Font.Default, Color.White);
+            g.DrawString(10, 24, "Version 22.10.", Font.Default, Color.White);
+            g.DrawString(10, 36, "CPU Exception", Font.Default, Color.White);
+            g.DrawString(10, 48, $"It seems than your {CPU.GetCPUBrandString()} have encountred an problem...", Font.Default, Color.White);
+            g.DrawString(10, 60, $"{ctxInterrupt} . {ctxInterruptDescription}", Font.Default, Color.White);
+            g.DrawString(10, 72, "We are sorry for this exception.", Font.Default, Color.White);
+            g.DrawString(10, 100, "Technical information : ", Font.Default, Color.White);
+            g.DrawString(10, 112, "Last known address : " + lastKnownAddress, Font.Default, Color.White);
+            g.DrawString(10, 124, "Frames before the kernel panic : " + g.TotalFrames, Font.Default, Color.White);
+            g.CopyTo((uint*)VBE.getLfbOffset());
+        }
+        #endregion
+
         protected override void BeforeRun()
         {
             // Show boot screen
@@ -99,10 +127,8 @@ namespace SipaaKernel
             }
             catch (Exception e)
             {
-                g.Dispose();
-                Console.WriteLine(e.Message);
+                SKPanic(0x01, e.Message);
             }
-
         }
     }
 }
