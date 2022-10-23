@@ -10,7 +10,7 @@
 
     <PropertyGroup>
         <EnableGDB>False</EnableGDB>
-        <StartCosmosGDB>False</StartCosmosGDB>
+        <StartCosmosGDB>True</StartCosmosGDB>
         <VisualStudioDebugPort>Pipe: Cosmos\Serial</VisualStudioDebugPort>
         <CosmosDebugPort>Serial: COM1</CosmosDebugPort>
         <Launch>VMware</Launch>
@@ -41,8 +41,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SipaaKernel.Graphics\SipaaKernel.Graphics.csproj" />
+      <ProjectReference Include="..\SipaaKernel.Core\SipaaKernel.Core.csproj" />
       <ProjectReference Include="..\SipaaKernel.UI\SipaaKernel.UI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="PrismGL2D">
+        <HintPath>..\Dependencies\PrismGL2D.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

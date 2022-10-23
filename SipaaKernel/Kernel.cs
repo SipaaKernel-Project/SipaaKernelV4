@@ -117,12 +117,12 @@ namespace SipaaKernel
             {
                 g.DrawImage(0, 0, Assets.Wallpaper, false);
                 topBar.Draw(g);
-                w.OnDraw(g);
-                w.OnUpdate();
+                //w.OnDraw(g);
+                //w.OnUpdate();
                 g.DrawString(11, 600 - 62, $"{g.FPS} FPS", Font.Default, Color.White);
                 g.DrawString(11, 600 - 31, "Sounds made by GreenSoupDev", Font.Default, Color.White);
                 g.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
-                g.UpdateFPS();
+                //g.UpdateFPS();
                 g.CopyTo((uint*)VBE.getLfbOffset());
             }
             catch (Exception e)
