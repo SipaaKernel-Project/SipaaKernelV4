@@ -1,6 +1,6 @@
 ﻿using Cosmos.Core;
 using Cosmos.System;
-using SipaaKernel.Graphics;
+using PrismGL2D;
 using SipaaKernel.UI.SysTheme2;
 
 namespace SipaaKernel.UI
@@ -26,9 +26,9 @@ namespace SipaaKernel.UI
         public string Text { get; set; } = "Widget";
         public WidgetState State { get; set; } = WidgetState.Idle;
 
-        protected FrameBuffer RenderWidget()
+        protected Graphics RenderWidget()
         {
-            var buf = new FrameBuffer(Width, Height);
+            var buf = new Graphics(Width, Height);
             if (IsAccentued)
             {
                 buf.DrawFilledRectangle(0, 0, Width, Height, (uint)Theme.GetBorderRadius(), Theme.GetAccentBackgroundColor(State));
@@ -42,9 +42,16 @@ namespace SipaaKernel.UI
             return buf;
         }
 
-        public virtual void OnDraw(FrameBuffer Buffer)
+        public virtual void OnDraw(Graphics Buffer)
         {
-            Buffer.DrawImage((int)X, (int)Y, RenderWidget());
+            if (Theme.GetBorderRadius() > 0)
+            {
+                Buffer.DrawImage((int)X, (int)Y, RenderWidget());
+            }
+            else
+            {
+                Buffer.DrawImage((int)X, (int)Y, RenderWidget(), false);
+            }
         }
         public virtual void OnUpdate()
         {

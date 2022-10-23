@@ -1,5 +1,5 @@
 ﻿using Cosmos.System;
-using SipaaKernel.Graphics;
+using PrismGL2D;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +10,25 @@ namespace SipaaKernel.UI.Widgets
 {
     public class Button : Widget
     {
-        public override void OnDraw(FrameBuffer Buffer)
+        public override void OnDraw(Graphics Buffer)
         {
-            FrameBuffer buf = RenderWidget();
+            Graphics buf = RenderWidget();
             if (IsAccentued)
             {
-                buf.DrawString((int)this.Width / 2, (int)this.Height / 2, Text, Font.Default, Theme.GetAccentForegroundColor(), true);
+                buf.DrawString((int)this.Width / 2, (int)this.Height / 2, Text, Font.Fallback, Theme.GetAccentForegroundColor(), true);
             }
             else
             {
-                buf.DrawString((int)this.Width / 2, (int)this.Height / 2, Text, Font.Default, Theme.GetForegroundColor(), true);
+                buf.DrawString((int)this.Width / 2, (int)this.Height / 2, Text, Font.Fallback, Theme.GetForegroundColor(), true);
             }
-            Buffer.DrawImage((int)X, (int)Y, buf);
+            if (Theme.GetBorderRadius() > 0)
+            {
+                buf.DrawImage((int)X, (int)Y, RenderWidget());
+            }
+            else
+            {
+                buf.DrawImage((int)X, (int)Y, RenderWidget(), false);
+            }
         }
     }
 }

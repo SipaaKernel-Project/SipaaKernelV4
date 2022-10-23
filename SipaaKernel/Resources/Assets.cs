@@ -1,6 +1,6 @@
 ﻿using IL2CPU.API.Attribs;
-using SipaaKernel.Graphics;
-using SipaaKernel.Graphics.Formats;
+using PrismGL2D;
+using PrismGL2D.Formats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +16,6 @@ namespace SipaaKernel
         [ManifestResourceStream(ResourceName = Base + "startupv1.wav")] public readonly static byte[] StartupWave;
 
         // Images
-        public static FrameBuffer Wallpaper = new Bitmap(WallpaperB);
+        public static Graphics Wallpaper = new Bitmap(WallpaperB);
     }
 }

@@ -1,4 +1,4 @@
-﻿using SipaaKernel.Graphics;
+﻿using PrismGL2D;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +9,19 @@ namespace SipaaKernel.UI.Components
 {
     public class TopBar
     {
-        public FrameBuffer Render(FrameBuffer mainFrameBuffer)
+        public Graphics Render(Graphics mainGraphics)
         {
-            FrameBuffer b = new FrameBuffer(mainFrameBuffer.Width, 32);
+            Graphics b = new Graphics(mainGraphics.Width, 32);
             b.DrawFilledRectangle(0, 0, b.Width, b.Height, 0, 0x323232);
-            b.DrawString((int)b.Width / 2, (int)b.Height / 2, Cosmos.HAL.RTC.Hour + " : " + Cosmos.HAL.RTC.Minute, Font.Default, Color.White, true);
+            b.DrawString((int)b.Width / 2, (int)b.Height / 2, Cosmos.HAL.RTC.Hour + " : " + Cosmos.HAL.RTC.Minute, Font.Fallback, Color.White, true);
             return b;
         }
-        public void Draw(FrameBuffer mainFrameBuffer)
+        public void Draw(Graphics mainGraphics)
         {
-            FrameBuffer b = new FrameBuffer(mainFrameBuffer.Width, 32);
+            Graphics b = new Graphics(mainGraphics.Width, 32);
             b.DrawFilledRectangle(0, 0, b.Width, b.Height, 0, 0x323232);
-            b.DrawString((int)b.Width / 2, (int)b.Height / 2, Cosmos.HAL.RTC.Hour + " : " + Cosmos.HAL.RTC.Minute, Font.Default, Color.White, true);
-            mainFrameBuffer.DrawImage(0, 0, b, false);
+            b.DrawString((int)b.Width / 2, (int)b.Height / 2, Cosmos.HAL.RTC.Hour + " : " + Cosmos.HAL.RTC.Minute, Font.Fallback, Color.White, true);
+            mainGraphics.DrawImage(0, 0, b, false); // the topbar will never be rounded lol
         }
     }
 }

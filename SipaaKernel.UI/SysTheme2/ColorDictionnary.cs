@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SipaaKernel.Graphics;
+using PrismGL2D;
 
 namespace SipaaKernel.UI.SysTheme2
 {

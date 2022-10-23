@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SipaaKernel.Graphics\SipaaKernel.Graphics.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Cosmos.Common">
       <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Common.dll</HintPath>
     </Reference>
@@ -43,6 +39,9 @@
     </Reference>
     <Reference Include="IL2CPU.API">
       <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\IL2CPU.API.dll</HintPath>
+    </Reference>
+    <Reference Include="PrismGL2D">
+      <HintPath>..\Dependencies\PrismGL2D.dll</HintPath>
     </Reference>
   </ItemGroup>
 

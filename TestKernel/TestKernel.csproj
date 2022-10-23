@@ -38,7 +38,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\SipaaKernel.Graphics\SipaaKernel.Graphics.csproj" />
+      <ProjectReference Include="..\PrismGL2D\PrismGL2D.csproj" />
     </ItemGroup>
 
 </Project>
