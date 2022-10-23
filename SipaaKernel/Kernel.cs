@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Sys = Cosmos.System;
 using Cosmos.Core;
 
+using PrismGL2D.Extentions;
 using PrismGL2D;
-using SipaaKernel.UI;
 
 using IL2CPU.API.Attribs;
 using static Cosmos.Core.INTs;
@@ -46,7 +44,7 @@ namespace SipaaKernel
 
     public unsafe class Kernel : Sys.Kernel
     {
-        public static Graphics g;
+        public static VBECanvas g;
         public static TopBar topBar;
         Button w;
 
@@ -84,9 +82,9 @@ namespace SipaaKernel
         protected override void BeforeRun()
         {
             // Show boot screen
-            g = new Graphics(VBE.getModeInfo().width, VBE.getModeInfo().height);
+            g = new();
             g.DrawString(10, 10, "Booting OS...", Font.Fallback, Color.White);
-            g.CopyTo((uint*)VBE.getLfbOffset());
+            g.Update();
             
             // Init audio
             //InitializeAudio();
@@ -102,7 +100,7 @@ namespace SipaaKernel
             Sys.MouseManager.ScreenHeight = VBE.getModeInfo().height;
 
             // Init the top bar
-            topBar = new TopBar();
+            topBar = new TopBar(g.Width, 35);
 
             // Resize the wallpaper to the canvas resolution
             Assets.Wallpaper = Assets.Wallpaper.Scale(g.Width, g.Height);
@@ -123,7 +121,7 @@ namespace SipaaKernel
                 g.DrawString(11, 600 - 31, "Sounds made by GreenSoupDev", Font.Fallback, Color.White);
                 g.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
                 //g.UpdateFPS();
-                g.CopyTo((uint*)VBE.getLfbOffset());
+                g.Update();
             }
             catch (Exception e)
             {

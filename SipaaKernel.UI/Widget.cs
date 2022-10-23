@@ -5,7 +5,7 @@ using SipaaKernel.UI.SysTheme2;
 
 namespace SipaaKernel.UI
 {
-    public class Widget
+    public class Widget : IDisposable
     {
         public Widget()
         {
@@ -46,11 +46,11 @@ namespace SipaaKernel.UI
         {
             if (Theme.GetBorderRadius() > 0)
             {
-                Buffer.DrawImage((int)X, (int)Y, RenderWidget());
+                Buffer.DrawImage(X, Y, RenderWidget());
             }
             else
             {
-                Buffer.DrawImage((int)X, (int)Y, RenderWidget(), false);
+                Buffer.DrawImage(X, Y, RenderWidget(), false);
             }
         }
         public virtual void OnUpdate()

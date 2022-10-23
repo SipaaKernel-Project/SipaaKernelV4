@@ -8,39 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Cosmos.Common">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.Core">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.Core.DebugStub">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Core.DebugStub.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.Core_Asm">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Core_Asm.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.Core_Plugs">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Core_Plugs.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.Debug.Kernel">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Debug.Kernel.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.Debug.Kernel.Plugs.Asm">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Debug.Kernel.Plugs.Asm.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.HAL2">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.HAL2.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.System2">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.System2.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.System2_Plugs">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.System2_Plugs.dll</HintPath>
-    </Reference>
-    <Reference Include="IL2CPU.API">
-      <HintPath>C:\Users\rapha\AppData\Roaming\Cosmos User Kit\Kernel\IL2CPU.API.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Cosmos.System2" Version="0.1.0-localbuild20221009092857" />
   </ItemGroup>
 
 </Project>

@@ -15,19 +15,19 @@ namespace SipaaKernel.UI.Widgets
             Graphics buf = RenderWidget();
             if (IsAccentued)
             {
-                buf.DrawString((int)this.Width / 2, (int)this.Height / 2, Text, Font.Fallback, Theme.GetAccentForegroundColor(), true);
+                buf.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, Theme.GetAccentForegroundColor(), true);
             }
             else
             {
-                buf.DrawString((int)this.Width / 2, (int)this.Height / 2, Text, Font.Fallback, Theme.GetForegroundColor(), true);
+                buf.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, Theme.GetForegroundColor(), true);
             }
             if (Theme.GetBorderRadius() > 0)
             {
-                buf.DrawImage((int)X, (int)Y, RenderWidget());
+                buf.DrawImage(X, Y, RenderWidget());
             }
             else
             {
-                buf.DrawImage((int)X, (int)Y, RenderWidget(), false);
+                buf.DrawImage(X, Y, RenderWidget(), false);
             }
         }
     }
