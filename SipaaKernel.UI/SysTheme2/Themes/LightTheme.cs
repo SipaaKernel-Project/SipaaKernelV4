@@ -14,7 +14,7 @@ namespace SipaaKernel.UI.SysTheme2.Themes
             ColorDictionnary cd = new ColorDictionnary();
             cd.AccentIdle = Color.FromARGB(255, 73, 9, 158);
             cd.AccentHover = Color.FromARGB(255, 57, 7, 122);
-            cd.AccentHover = Color.FromARGB(255, 39, 6, 82);
+            cd.AccentClicked = Color.FromARGB(255, 39, 6, 82);
             cd.AccentForeground = Color.White;
 
             cd.WidgetIdle = Color.FromARGB(255, 250, 250, 250);

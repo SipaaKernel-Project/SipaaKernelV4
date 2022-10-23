@@ -44,14 +44,7 @@ namespace SipaaKernel.UI
 
         public virtual void OnDraw(Graphics Buffer)
         {
-            if (Theme.GetBorderRadius() > 0)
-            {
-                Buffer.DrawImage(X, Y, RenderWidget());
-            }
-            else
-            {
-                Buffer.DrawImage(X, Y, RenderWidget(), false);
-            }
+            Buffer.DrawImage(X, Y, RenderWidget());
         }
         public virtual void OnUpdate()
         {

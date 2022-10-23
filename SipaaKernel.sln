@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SipaaKernel", "SipaaKernel\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SipaaKernel.UI", "SipaaKernel.UI\SipaaKernel.UI.csproj", "{103994F8-C715-4F9C-9E70-6EBAD51244E5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestKernel", "TestKernel\TestKernel.csproj", "{96945666-EA32-4173-B4BC-BDD6706E6934}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SipaaKernel.Core", "SipaaKernel.Core\SipaaKernel.Core.csproj", "{514D53D6-1426-472B-8600-877C568C7C18}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{103994F8-C715-4F9C-9E70-6EBAD51244E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{103994F8-C715-4F9C-9E70-6EBAD51244E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{103994F8-C715-4F9C-9E70-6EBAD51244E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96945666-EA32-4173-B4BC-BDD6706E6934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96945666-EA32-4173-B4BC-BDD6706E6934}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96945666-EA32-4173-B4BC-BDD6706E6934}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96945666-EA32-4173-B4BC-BDD6706E6934}.Release|Any CPU.Build.0 = Release|Any CPU
 		{514D53D6-1426-472B-8600-877C568C7C18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{514D53D6-1426-472B-8600-877C568C7C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{514D53D6-1426-472B-8600-877C568C7C18}.Release|Any CPU.ActiveCfg = Release|Any CPU

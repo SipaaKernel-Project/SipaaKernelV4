@@ -15,14 +15,7 @@ namespace SipaaKernel.UI.Widgets
             {
                 buf.DrawString((int)Width / 2, (int)Height / 2, Text, Font.Fallback, Theme.GetForegroundColor(), true);
             }
-            if (Theme.GetBorderRadius() > 0)
-            {
-                buf.DrawImage(X, Y, RenderWidget());
-            }
-            else
-            {
-                buf.DrawImage(X, Y, RenderWidget(), false);
-            }
+            Buffer.DrawImage(X, Y, buf);
         }
     }
 }

@@ -95,6 +95,7 @@ namespace SipaaKernel
             w.Y = 100;
             w.IsAccentued = true;
             w.HasBorder = true;
+
             // Init the mouse
             Sys.MouseManager.ScreenWidth = VBE.getModeInfo().width;
             Sys.MouseManager.ScreenHeight = VBE.getModeInfo().height;
@@ -115,12 +116,11 @@ namespace SipaaKernel
             {
                 g.DrawImage(0, 0, Assets.Wallpaper, false);
                 topBar.Draw(g);
-                //w.OnDraw(g);
-                //w.OnUpdate();
-                //g.DrawString(11, 600 - 62, $"{g.FPS} FPS", Font.Fallback, Color.White);
+                w.OnDraw(g);
+                w.OnUpdate();
+                g.DrawString(11, 600 - 62, $"{g.GetFPS()} FPS", Font.Fallback, Color.White);
                 g.DrawString(11, 600 - 31, "Sounds made by GreenSoupDev", Font.Fallback, Color.White);
                 g.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
-                //g.UpdateFPS();
                 g.Update();
             }
             catch (Exception e)
