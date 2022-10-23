@@ -1,10 +1,4 @@
-﻿using Cosmos.System;
-using PrismGL2D;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PrismGL2D;
 
 namespace SipaaKernel.UI.Widgets
 {
