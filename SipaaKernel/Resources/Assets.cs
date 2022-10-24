@@ -13,9 +13,11 @@ namespace SipaaKernel
     {
         public const string Base = "SipaaKernel.Resources.";
         [ManifestResourceStream(ResourceName = Base + "wallpaper.bmp")] public readonly static byte[] WallpaperB;
+        [ManifestResourceStream(ResourceName = Base + "skboot.bmp")] public readonly static byte[] BootB;
         [ManifestResourceStream(ResourceName = Base + "startupv1.wav")] public readonly static byte[] StartupWave;
 
         // Images
         public static Graphics Wallpaper = new Bitmap(WallpaperB);
+        public static Graphics BootBitmap = new Bitmap(BootB);
     }
 }

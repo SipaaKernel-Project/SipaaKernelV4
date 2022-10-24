@@ -83,7 +83,13 @@ namespace SipaaKernel
         {
             // Show boot screen
             g = new();
-            g.DrawString(10, 10, "Booting OS...", Font.Fallback, Color.White);
+            g.DrawString(10, 10, "SipaaKernel V4 22.10 (build 24.10.2022)", Font.Fallback, Color.White);
+            g.DrawString(10, 24, $"Processor : {CPU.GetCPUBrandString()}", Font.Fallback, Color.White);
+            g.DrawString(10, 38, $"Total Memory : {CPU.GetAmountOfRAM()}mb", Font.Fallback, Color.White);
+            g.DrawString(10, 60, "VESA VBE Graphics by Terminal.cs", Font.Fallback, Color.White);
+            g.DrawString(10, 74, "Sounds by GreenSoupDev", Font.Fallback, Color.White);
+            g.DrawString(10, (int)g.Height - 24, "Made by RaphMar2019 and his community.", Font.Fallback, Color.White);
+            g.DrawImage((int)g.Width / 2 - (int)Assets.BootBitmap.Width / 2, (int)g.Height / 2 - (int)Assets.BootBitmap.Height / 2, Assets.BootBitmap, false);
             g.Update();
             
             // Init audio
@@ -105,7 +111,10 @@ namespace SipaaKernel
 
             // Resize the wallpaper to the canvas resolution
             Assets.Wallpaper = Assets.Wallpaper.Scale(g.Width, g.Height);
-            
+
+            // Wait some seconds
+            Cosmos.HAL.Global.PIT.Wait(10000);
+
             // Play the startup sound
             //Play(MemoryAudioStream.FromWave(Assets.StartupWave));
         }

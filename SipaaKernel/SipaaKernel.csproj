@@ -25,11 +25,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="Resources\skboot.bmp" />
       <None Remove="Resources\startupv1.wav" />
       <None Remove="Resources\wallpaper.bmp" />
     </ItemGroup>
 
     <ItemGroup>
+      <EmbeddedResource Include="Resources\skboot.bmp" />
       <EmbeddedResource Include="Resources\startupv1.wav" />
       <EmbeddedResource Include="Resources\wallpaper.bmp" />
     </ItemGroup>
