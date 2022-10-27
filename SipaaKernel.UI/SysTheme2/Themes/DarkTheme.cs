@@ -24,7 +24,7 @@ namespace SipaaKernel.UI.SysTheme2.Themes
             cd.WindowBackground = Color.FromARGB(255, 12, 12, 12);
             cd.Component = Color.FromARGB(255, 32, 32, 32);
 
-            cd.Foreground = Color.FromARGB(255, 32, 32, 32);
+            cd.Foreground = Color.FromARGB(255, 255, 255, 255);
 
             this.BorderRadius = 0;
             this.CenterWindowTitle = false;

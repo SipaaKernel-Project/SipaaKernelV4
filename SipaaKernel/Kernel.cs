@@ -7,8 +7,13 @@ using PrismGL2D;
 
 using IL2CPU.API.Attribs;
 using static Cosmos.Core.INTs;
-using SipaaKernel.UI.Components;
 using SipaaKernel.UI.Widgets;
+using SipaaKernel.UI;
+using Cosmos.System.Network.IPv4.UDP.DHCP;
+using Cosmos.System.FileSystem.VFS;
+using Cosmos.System.FileSystem;
+using SipaaKernel.Core;
+using Cosmos.System.Audio.IO;
 
 namespace SipaaKernel
 {
@@ -45,9 +50,7 @@ namespace SipaaKernel
     public unsafe class Kernel : Sys.Kernel
     {
         public static VBECanvas g;
-        public static TopBar topBar;
-        Button w;
-
+        protected SKDE skde;
         #region Some API functions
         public static void SKPanic(uint error, string description)
         {
@@ -91,23 +94,17 @@ namespace SipaaKernel
             g.DrawString(10, (int)g.Height - 24, "Made by RaphMar2019 and his community.", Font.Fallback, Color.White);
             g.DrawImage((int)g.Width / 2 - (int)Assets.BootBitmap.Width / 2, (int)g.Height / 2 - (int)Assets.BootBitmap.Height / 2, Assets.BootBitmap, false);
             g.Update();
-            
-            // Init audio
-            //InitializeAudio();
 
-            // Init some widgets
-            w = new Button();
-            w.X = 100;
-            w.Y = 100;
-            w.IsAccentued = true;
-            w.HasBorder = true;
+            // Init audio
+            //Audio.InitializeAudio();
+
+            // Init network & file system
+            _ = new DHCPClient().SendDiscoverPacket();
+            VFSManager.RegisterVFS(new CosmosVFS(), false, false);
 
             // Init the mouse
             Sys.MouseManager.ScreenWidth = VBE.getModeInfo().width;
             Sys.MouseManager.ScreenHeight = VBE.getModeInfo().height;
-
-            // Init the top bar
-            topBar = new TopBar(g.Width, 35);
 
             // Resize the wallpaper to the canvas resolution
             Assets.Wallpaper = Assets.Wallpaper.Scale(g.Width, g.Height);
@@ -115,18 +112,35 @@ namespace SipaaKernel
             // Wait some seconds
             Cosmos.HAL.Global.PIT.Wait(10000);
 
+            // Init SKDE
+            skde = new SKDE();
+            skde.Initialize();
+
+            // Show the welcome message
+            MessageBox.Show("Welcome to SipaaKernel V4, an OS made with\nCosmos!\nWARNING : This is a pre-release OS.", "Welcome!");
+
             // Play the startup sound
-            //Play(MemoryAudioStream.FromWave(Assets.StartupWave));
+            //Audio.Play(MemoryAudioStream.FromWave(Assets.StartupWave));
         }
 
         protected override void Run()
         {
             try
             {
-                g.DrawImage(0, 0, Assets.Wallpaper, false);
-                topBar.Draw(g);
-                w.OnDraw(g);
-                w.OnUpdate();
+                skde.Draw(g);
+                foreach (Window w in Window.Windows)
+                {
+                    try
+                    {
+                        w.OnDraw(g);
+                        w.OnUpdate();
+                    }catch(Exception ex)
+                    {
+                        Window.Windows.Remove(w);
+                        MessageBox.Show($"A window has crashed and needs to quit.\n{ex.Message}\nWe are sorry for this exception");
+                    }
+                }
+
                 g.DrawString(11, 600 - 62, $"{g.GetFPS()} FPS", Font.Fallback, Color.White);
                 g.DrawString(11, 600 - 31, "Sounds made by GreenSoupDev", Font.Fallback, Color.White);
                 g.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);

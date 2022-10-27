@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Cosmos.System2" Version="0.1.0-localbuild20221009092857" />
+    <PackageReference Include="Cosmos.System2" Version="0.1.0-localbuild20221027073550" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="PrismGL2D">
       <HintPath>..\Dependencies\PrismGL2D.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\" />
   </ItemGroup>
 
 </Project>
