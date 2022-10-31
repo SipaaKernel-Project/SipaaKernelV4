@@ -12,9 +12,6 @@ namespace SipaaKernel.UI
 {
     public class Window
     {
-        #region Window Manager
-        public static List<Window> Windows = new List<Window>();
-        #endregion
 
         private string _Title;
         private uint _Width = 150, _Height = 150;
@@ -27,6 +24,7 @@ namespace SipaaKernel.UI
         public uint Height { get => _Height; set { _Height = value; RenderTitleBar(); winG.Scale(Width, value, PrismGL2D.Structure.ScaleMode.DontKeep); } }
         public uint TitleBarHeight { get => TitleBar.Height; }
         public Theme Theme { get => ThemeManager.GetCurrentTheme(); }
+        public uint Handle;
 
         private Button CloseButton;
 
@@ -50,10 +48,12 @@ namespace SipaaKernel.UI
             CloseButton.Text = "X";
 
             CloseButton.IsAccentued = true;
-            CloseButton.OnClick = () => { Window.Windows.Remove(this); };
+            CloseButton.OnClick = () => { WindowManager.Windows.Remove(this); };
+
+            Handle = (uint)new Random().Next(1024, 200082);
 
             if (showWindow)
-                Window.Windows.Add(this);
+                WindowManager.Windows.Add(this);
         }
 
         public virtual void OnDraw(Graphics g)
@@ -69,7 +69,7 @@ namespace SipaaKernel.UI
 
         public void Close()
         {
-            Window.Windows.Remove(this);
+            WindowManager.Windows.Remove(this);
             if (OnClose != null)
                 OnClose.Invoke();
         }

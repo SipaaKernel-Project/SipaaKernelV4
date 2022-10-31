@@ -142,7 +142,7 @@ namespace SipaaKernel
                 }
 
                 g.DrawString(11, 600 - 62, $"{g.GetFPS()} FPS", Font.Fallback, Color.White);
-                g.DrawString(11, 600 - 31, "Sounds made by GreenSoupDev", Font.Fallback, Color.White);
+                //g.DrawString(11, 600 - 31, "Sounds made by GreenSoupDev", Font.Fallback, Color.White);
                 g.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
                 g.Update();
             }
