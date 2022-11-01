@@ -5,6 +5,7 @@ using SipaaKernel.UI.Widgets;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,8 +25,8 @@ namespace SipaaKernel.UI
         public uint Height { get => _Height; set { _Height = value; RenderTitleBar(); winG.Scale(Width, value, PrismGL2D.Structure.ScaleMode.DontKeep); } }
         public uint TitleBarHeight { get => TitleBar.Height; }
         public Theme Theme { get => ThemeManager.GetCurrentTheme(); }
-        public uint Handle;
-
+        public uint _Handle;
+        public uint Handle { get => _Handle; }
         private Button CloseButton;
 
         int px;
@@ -50,7 +51,7 @@ namespace SipaaKernel.UI
             CloseButton.IsAccentued = true;
             CloseButton.OnClick = () => { WindowManager.Windows.Remove(this); };
 
-            Handle = (uint)new Random().Next(1024, 200082);
+            _Handle = (uint)new Random().Next(1024, 200082);
 
             if (showWindow)
                 WindowManager.Windows.Add(this);

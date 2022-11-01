@@ -128,7 +128,7 @@ namespace SipaaKernel
             try
             {
                 skde.Draw(g);
-                foreach (Window w in Window.Windows)
+                foreach (Window w in WindowManager.Windows)
                 {
                     try
                     {
@@ -136,7 +136,7 @@ namespace SipaaKernel
                         w.OnUpdate();
                     }catch(Exception ex)
                     {
-                        Window.Windows.Remove(w);
+                        WindowManager.Windows.Remove(w);
                         MessageBox.Show($"A window has crashed and needs to quit.\n{ex.Message}\nWe are sorry for this exception");
                     }
                 }

@@ -23,7 +23,7 @@ namespace SipaaKernel.UI
                 this.Y = (int)VBE.getModeInfo().height / 2 - (int)this.Height / 2;
                 this.Title = title;
                 tb = new TextBlock { Width = this.Width, Height = this.Height, Text = message, X = this.X + 10, Y = this.Y + (int)TitleBarHeight + 10 };
-                okbtn = new Button { Text = "OK", IsAccentued = true, OnClick = () => { Window.Windows.Remove(this); } };
+                okbtn = new Button { Text = "OK", IsAccentued = true, OnClick = () => { WindowManager.CloseWindow(this); } };
                 okbtn.X = this.X + (int)this.Width - (int)okbtn.Width - 10;
                 okbtn.Y = this.Y + (int)this.Height - (int)okbtn.Height - 10;
                 this.Widgets.Add(tb);
