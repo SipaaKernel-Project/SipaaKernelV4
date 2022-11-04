@@ -14,6 +14,7 @@ using Cosmos.System.FileSystem.VFS;
 using Cosmos.System.FileSystem;
 using SipaaKernel.Core;
 using Cosmos.System.Audio.IO;
+using System.Runtime.CompilerServices;
 
 namespace SipaaKernel
 {
@@ -46,39 +47,52 @@ namespace SipaaKernel
             Kernel.SKCPUException(lastsknowaddress, ctxinterrupt, aDescription);
         }
     }
-
     public unsafe class Kernel : Sys.Kernel
     {
         public static VBECanvas g;
         protected SKDE skde;
+        // OS infos
+        public static readonly string OSName = "SipaaKernel V4";
+        public static readonly double OSVersion = 22.11;
+        public static readonly double OSBuild = 2211.04; // The build number format : <Year><Month>.<Day>
+        public static readonly string[] Contributors = new string[] { "Terminal.cs", "GreenSoup Dev", "Cosmos Team" }; 
+
         #region Some API functions
         public static void SKPanic(uint error, string description)
         {
             g.Clear();
-            g.DrawString(10, 10, "SipaaKernel V4 (CONFIDENTIAL BUILD)", Font.Fallback, Color.White);
-            g.DrawString(10, 24, "Version 22.10.", Font.Fallback, Color.White);
+            g.DrawString(10, 10, $"{OSName} (CONFIDENTIAL BUILD)", Font.Fallback, Color.White);
+            g.DrawString(10, 24, $"Version {OSVersion} (build {OSBuild})", Font.Fallback, Color.White);
             g.DrawString(10, 36, "Kernel Panic", Font.Fallback, Color.White);
-            g.DrawString(10, 48, "It seems than SipaaKernel have encountred an error...", Font.Fallback, Color.White);
+            g.DrawString(10, 48, $"It seems than {OSName} have encountred an error...", Font.Fallback, Color.White);
             g.DrawString(10, 60, description, Font.Fallback, Color.White);
             g.DrawString(10, 72, "We are sorry for this exception.", Font.Fallback, Color.White);
             g.DrawString(10, 100, "Technical information : ", Font.Fallback, Color.White);
             g.DrawString(10, 112, "Error Code : " + error, Font.Fallback, Color.White);
+            g.DrawString(10, 124, $"Processor : {CPU.GetCPUBrandString()}", Font.Fallback, Color.White);
+            g.DrawString(10, 136, $"Total Memory : {CPU.GetAmountOfRAM()}mb", Font.Fallback, Color.White);
             //g.DrawString(10, 124, "Frames before the kernel panic : " + g.TotalFrames, Font.Fallback, Color.White); 
-            g.CopyTo((uint*)VBE.getLfbOffset());
+            g.Update();
+            Console.ReadKey();
+            Sys.Power.Reboot();
         }
         public static void SKCPUException(string lastKnownAddress, string ctxInterrupt, string ctxInterruptDescription)
         {
             g.Clear();
-            g.DrawString(10, 10, "SipaaKernel V4", Font.Fallback, Color.White);
-            g.DrawString(10, 24, "Version 22.10.", Font.Fallback, Color.White);
+            g.DrawString(10, 10, $"{OSName} (CONFIDENTIAL BUILD)", Font.Fallback, Color.White);
+            g.DrawString(10, 24, $"Version {OSVersion} (build {OSBuild})", Font.Fallback, Color.White);
             g.DrawString(10, 36, "CPU Exception", Font.Fallback, Color.White);
             g.DrawString(10, 48, $"It seems than your {CPU.GetCPUBrandString()} have encountred an problem...", Font.Fallback, Color.White);
-            g.DrawString(10, 60, $"{ctxInterrupt} . {ctxInterruptDescription}", Font.Fallback, Color.White);
+            g.DrawString(10, 60, $"{ctxInterrupt} : {ctxInterruptDescription}", Font.Fallback, Color.White);
             g.DrawString(10, 72, "We are sorry for this exception.", Font.Fallback, Color.White);
             g.DrawString(10, 100, "Technical information : ", Font.Fallback, Color.White);
             g.DrawString(10, 112, "Last known address : " + lastKnownAddress, Font.Fallback, Color.White);
+            g.DrawString(10, 124, $"Processor : {CPU.GetCPUBrandString()}", Font.Fallback, Color.White);
+            g.DrawString(10, 136, $"Total Memory : {CPU.GetAmountOfRAM()}mb", Font.Fallback, Color.White);
             //g.DrawString(10, 124, "Frames before the kernel panic : " + g.TotalFrames, Font.Fallback, Color.White);
-            g.CopyTo((uint*)VBE.getLfbOffset());
+            g.Update();
+            Console.ReadKey();
+            Sys.Power.Reboot();
         }
         #endregion
 
@@ -86,7 +100,7 @@ namespace SipaaKernel
         {
             // Enable graphics
             g = new();
-            g.DrawString(10, 10, "SipaaKernel V4 22.10 (build 24.10.2022)", Font.Fallback, Color.White);
+            g.DrawString(10, 10, $"{OSName} {OSVersion} (build {OSBuild})", Font.Fallback, Color.White);
             g.DrawString(10, 24, $"Processor : {CPU.GetCPUBrandString()}", Font.Fallback, Color.White);
             g.DrawString(10, 38, $"Total Memory : {CPU.GetAmountOfRAM()}mb", Font.Fallback, Color.White);
             g.DrawString(10, 60, "VESA VBE Graphics by Terminal.cs", Font.Fallback, Color.White);
@@ -156,6 +170,7 @@ namespace SipaaKernel
                 //g.DrawString(11, 600 - 31, "Sounds made by GreenSoupDev", Font.Fallback, Color.White);
                 g.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
                 g.Update();
+
             }
             catch (Exception e)
             {

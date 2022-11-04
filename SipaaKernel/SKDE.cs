@@ -39,19 +39,19 @@ namespace SipaaKernel
         private TopBar topBar;
         public uint TopBarHeight { get => topBar.G.Height; }
 
-        private Button TestButton;
+        private Button AboutButton;
 
         public void Initialize()
         {
             //Wallpaper = Assets.Wallpaper;
             topBar = new TopBar(VBE.getModeInfo().width, 24);
-            TestButton = new Button();
-            TestButton.Y = 560;
-            TestButton.X = 0;
-            TestButton.Width = 40;
-            TestButton.Height = 40;
-            TestButton.Text = "T";
-            TestButton.OnClick = () => { WindowManager.CreateWindow(new WindowOptions { Height = 150, Width = 150, Title = "Test Window", X = 100, Y = 100 }); };
+            AboutButton = new Button();
+            AboutButton.Y = 560;
+            AboutButton.X = 0;
+            AboutButton.Width = 40;
+            AboutButton.Height = 40;
+            AboutButton.Text = "A";
+            AboutButton.OnClick = () => { AboutApp.Main(); };
         }
 
         public void Draw(Graphics g)
@@ -62,12 +62,12 @@ namespace SipaaKernel
 
             // Draw launcher
             //g.DrawFilledRectangle(0, 560, 800, 40, 0, Color.Black);
-            TestButton.OnDraw(g);
+            AboutButton.OnDraw(g);
         }
 
         public void Update()
         {
-            TestButton.OnUpdate();
+            AboutButton.OnUpdate();
         }
     }
 }

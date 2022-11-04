@@ -36,43 +36,46 @@ namespace SipaaKernel.UI
         bool pressed;
         private bool visible = true;
 
-        public Action OnClose;
+        public Action OnCloseWindow;
+        public Action<Graphics> OnDrawWindow;
+        public Action OnUpdateWindow;
+
         public bool HasWindowMoving { get; set; } = false;
 
         public Window(bool showWindow = true)
         {
-            RenderTitleBar();
             winG = new Graphics(Width, Height);
+            RenderTitleBar();
             CloseButton = new Button() { Width = TitleBarHeight, Height = TitleBarHeight };
             CloseButton.X = this.X + (int)this.Width - (int)CloseButton.Width;
             CloseButton.Y = this.Y;
             CloseButton.Text = "X";
 
             CloseButton.IsAccentued = true;
-            CloseButton.OnClick = () => { WindowManager.Windows.Remove(this); };
+            CloseButton.OnClick = () => { Close(); };
 
             _Handle = (uint)new Random().Next(1024, 200082);
 
             if (showWindow)
                 WindowManager.Windows.Add(this);
         }
-
         public virtual void OnDraw(Graphics g)
         {
-            Graphics windowGraphics = RenderWindow();
-            g.DrawImage(X, Y, windowGraphics, true);
+            g.DrawImage(X, Y, RenderWindow(), true);
             CloseButton.OnDraw(g);
             foreach (Widget w in Widgets)
             {
                 w.OnDraw(g);
             }
+            if (OnDrawWindow != null)
+                OnDrawWindow.Invoke(g);
         }
 
         public void Close()
         {
             WindowManager.Windows.Remove(this);
-            if (OnClose != null)
-                OnClose.Invoke();
+            if (OnCloseWindow != null)
+                OnCloseWindow.Invoke();
         }
 
         public virtual void OnUpdate()
@@ -114,6 +117,8 @@ namespace SipaaKernel.UI
             {
                 w.OnUpdate();
             }
+            if (OnUpdateWindow != null)
+                OnUpdateWindow.Invoke();
         }
 
         // Window renderer
@@ -137,7 +142,7 @@ namespace SipaaKernel.UI
         /// <returns>The graphics where the window has been rendered</returns>
         public Graphics RenderWindow()
         {
-            winG.DrawFilledRectangle(0, 0, Width, Height, (uint)Theme.GetBorderRadius(), Theme.GetWindowBackgroundColor());
+            winG.Clear(Theme.GetWindowBackgroundColor());
             winG.DrawImage(0, 0, RenderTitleBar(), true);
             return winG;
         }
