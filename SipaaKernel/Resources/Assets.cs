@@ -17,7 +17,7 @@ namespace SipaaKernel
         [ManifestResourceStream(ResourceName = Base + "startupv1.wav")] public readonly static byte[] StartupWave;
 
         // Images
-        public static Graphics Wallpaper = new Bitmap(WallpaperB);
+        //public static Graphics Wallpaper = new Bitmap(WallpaperB);
         public static Graphics BootBitmap = new Bitmap(BootB);
     }
 }

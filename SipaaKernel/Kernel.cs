@@ -84,7 +84,7 @@ namespace SipaaKernel
 
         protected override void BeforeRun()
         {
-            // Show boot screen
+            // Enable graphics
             g = new();
             g.DrawString(10, 10, "SipaaKernel V4 22.10 (build 24.10.2022)", Font.Fallback, Color.White);
             g.DrawString(10, 24, $"Processor : {CPU.GetCPUBrandString()}", Font.Fallback, Color.White);
@@ -99,20 +99,26 @@ namespace SipaaKernel
             //Audio.InitializeAudio();
 
             // Init network & file system
+            Console.WriteLine("[INFO] DHCP Initialization");
             _ = new DHCPClient().SendDiscoverPacket();
+            Console.WriteLine("[INFO] Virtual File System initialization");
             VFSManager.RegisterVFS(new CosmosVFS(), false, false);
 
             // Init the mouse
+            Console.WriteLine("[INFO] Mouse initialization");
             Sys.MouseManager.ScreenWidth = VBE.getModeInfo().width;
             Sys.MouseManager.ScreenHeight = VBE.getModeInfo().height;
 
             // Resize the wallpaper to the canvas resolution
-            Assets.Wallpaper = Assets.Wallpaper.Scale(g.Width, g.Height);
+            Console.WriteLine("[INFO] Making wallpaper ready...");
+            //Assets.Wallpaper = Assets.Wallpaper.Scale(g.Width, g.Height);
 
             // Wait some seconds
-            Cosmos.HAL.Global.PIT.Wait(10000);
+            //Cosmos.HAL.Global.PIT.Wait(10000);
+
 
             // Init SKDE
+            Console.WriteLine("[INFO] SKDE initialization");
             skde = new SKDE();
             skde.Initialize();
 
@@ -121,6 +127,10 @@ namespace SipaaKernel
 
             // Play the startup sound
             //Audio.Play(MemoryAudioStream.FromWave(Assets.StartupWave));
+
+            Console.WriteLine("[OK] SipaaKernel is now initialized!");
+            Console.WriteLine("Now waiting 5 seconds");
+
         }
 
         protected override void Run()
@@ -128,6 +138,7 @@ namespace SipaaKernel
             try
             {
                 skde.Draw(g);
+                skde.Update();
                 foreach (Window w in WindowManager.Windows)
                 {
                     try

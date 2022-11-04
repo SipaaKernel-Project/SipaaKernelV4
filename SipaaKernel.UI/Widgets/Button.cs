@@ -1,9 +1,11 @@
-﻿using PrismGL2D;
+﻿using Cosmos.System;
+using PrismGL2D;
 
 namespace SipaaKernel.UI.Widgets
 {
     public class Button : Widget
     {
+        MouseState LastMouseState;
         public Action OnClick;
         public override void OnDraw(Graphics Buffer)
         {
@@ -22,8 +24,10 @@ namespace SipaaKernel.UI.Widgets
         public override void OnUpdate()
         {
             base.OnUpdate();
-            if (this.State == WidgetState.Clicked)
-                OnClick.Invoke();
+            if (this.State == WidgetState.Clicked && MouseManager.MouseState != LastMouseState)
+                if (OnClick != null)
+                    OnClick.Invoke();
+            LastMouseState = MouseManager.MouseState;
         }
     }
 }

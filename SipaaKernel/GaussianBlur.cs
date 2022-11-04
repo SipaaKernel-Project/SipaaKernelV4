@@ -1,14 +1,14 @@
 ﻿using Cosmos.Core.Memory;
-using PrismGL2D;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace SipaaKernel
+
+namespace PrismGL2D
 {
     /// <summary>
-    /// Gaussian blur for SipaaKernel
+    /// Draws gaussian blur rectangles
     /// 
     /// DON'T USE IT, IT WILL MAKE SIPAAKERNEL VERY LAGGY (0 FPS)
     /// </summary>

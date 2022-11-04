@@ -1,5 +1,7 @@
 ﻿using Cosmos.Core;
 using PrismGL2D;
+using SipaaKernel.UI.Widgets;
+using SipaaKernel.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,16 +39,35 @@ namespace SipaaKernel
         private TopBar topBar;
         public uint TopBarHeight { get => topBar.G.Height; }
 
+        private Button TestButton;
+
         public void Initialize()
         {
-            Wallpaper = Assets.Wallpaper;
+            //Wallpaper = Assets.Wallpaper;
             topBar = new TopBar(VBE.getModeInfo().width, 24);
+            TestButton = new Button();
+            TestButton.Y = 560;
+            TestButton.X = 0;
+            TestButton.Width = 40;
+            TestButton.Height = 40;
+            TestButton.Text = "T";
+            TestButton.OnClick = () => { WindowManager.CreateWindow(new WindowOptions { Height = 150, Width = 150, Title = "Test Window", X = 100, Y = 100 }); };
         }
 
         public void Draw(Graphics g)
         {
-            g.DrawImage(0, 0, Assets.Wallpaper, false);
+            g.Clear(Color.GoogleBlue);
+            //g.DrawImage(0, 0, Assets.Wallpaper, false);
             topBar.Draw(g);
+
+            // Draw launcher
+            //g.DrawFilledRectangle(0, 560, 800, 40, 0, Color.Black);
+            TestButton.OnDraw(g);
+        }
+
+        public void Update()
+        {
+            TestButton.OnUpdate();
         }
     }
 }
