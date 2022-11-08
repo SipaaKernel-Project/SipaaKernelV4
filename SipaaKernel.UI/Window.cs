@@ -11,19 +11,19 @@ using System.Threading.Tasks;
 
 namespace SipaaKernel.UI
 {
-    public class Window
+    public class Window : Graphics
     {
 
         private string _Title;
         private uint _Width = 150, _Height = 150;
-        public string Title { get => _Title; set { _Title = value; RenderTitleBar(); } }
+        public string Title { get => _Title; set { _Title = value; } }
 
         public List<Widget> Widgets { get; set; } = new List<Widget>();
         public int X { get; set; } = 0;
         public int Y { get; set; } = 0;
-        public uint Width { get => _Width; set { _Width = value; RenderTitleBar(); winG.Scale(value, Height, PrismGL2D.Structure.ScaleMode.DontKeep); } }
-        public uint Height { get => _Height; set { _Height = value; RenderTitleBar(); winG.Scale(Width, value, PrismGL2D.Structure.ScaleMode.DontKeep); } }
-        public uint TitleBarHeight { get => TitleBar.Height; }
+        public new uint Width { get => base.Width; set { base.Width = value; } }
+        public new uint Height { get => base.Height; set { base. Height = value; } }
+        public uint TitleBarHeight { get => TitleBarGraphics.Height; }
         public Theme Theme { get => ThemeManager.GetCurrentTheme(); }
         public uint _Handle;
         public uint Handle { get => _Handle; }
@@ -35,6 +35,7 @@ namespace SipaaKernel.UI
 
         bool pressed;
         private bool visible = true;
+        private Graphics TitleBarGraphics;
 
         public Action OnCloseWindow;
         public Action<Graphics> OnDrawWindow;
@@ -42,10 +43,14 @@ namespace SipaaKernel.UI
 
         public bool HasWindowMoving { get; set; } = false;
 
-        public Window(bool showWindow = true)
+        public Window(bool showWindow = true) : base(175, 175)
         {
-            winG = new Graphics(Width, Height);
-            RenderTitleBar();
+            Clear(Theme.GetWindowBackgroundColor());
+            TitleBarGraphics = new Graphics(Width, 32);
+            TitleBarGraphics.Clear(Theme.GetAccentBackgroundColor(WidgetState.Idle));
+            TitleBarGraphics.DrawString((int)TitleBarGraphics.Width / 2, (int)TitleBarGraphics.Height / 2, Title, Font.Fallback, Theme.GetAccentForegroundColor(), true);
+            DrawImage(0, 0, TitleBarGraphics, true);
+
             CloseButton = new Button() { Width = TitleBarHeight, Height = TitleBarHeight };
             CloseButton.X = this.X + (int)this.Width - (int)CloseButton.Width;
             CloseButton.Y = this.Y;
@@ -61,7 +66,7 @@ namespace SipaaKernel.UI
         }
         public virtual void OnDraw(Graphics g)
         {
-            g.DrawImage(X, Y, RenderWindow(), true);
+            g.DrawImage(X, Y, this, false);
             CloseButton.OnDraw(g);
             foreach (Widget w in Widgets)
             {
@@ -119,32 +124,6 @@ namespace SipaaKernel.UI
             }
             if (OnUpdateWindow != null)
                 OnUpdateWindow.Invoke();
-        }
-
-        // Window renderer
-        private Graphics TitleBar;
-        private Graphics winG;
-
-        /// <summary>
-        /// Render the title bar
-        /// </summary>
-        /// <param name="Title">The title to render</param>
-        public Graphics RenderTitleBar()
-        {
-            TitleBar = new Graphics(Width, 32);
-            TitleBar.DrawFilledRectangle(0, 0, TitleBar.Width, TitleBar.Height, (uint)Theme.GetBorderRadius(),Theme.GetAccentBackgroundColor(WidgetState.Idle));
-            TitleBar.DrawString((int)TitleBar.Width / 2, (int)TitleBar.Height /2, Title, Font.Fallback, Theme.GetAccentForegroundColor(), true);
-            return TitleBar;
-        }
-        /// <summary>
-        /// Render the window
-        /// </summary>
-        /// <returns>The graphics where the window has been rendered</returns>
-        public Graphics RenderWindow()
-        {
-            winG.Clear(Theme.GetWindowBackgroundColor());
-            winG.DrawImage(0, 0, RenderTitleBar(), true);
-            return winG;
         }
     }
 }

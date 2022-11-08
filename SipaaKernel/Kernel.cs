@@ -127,8 +127,6 @@ namespace SipaaKernel
             Console.WriteLine("[INFO] Making wallpaper ready...");
             //Assets.Wallpaper = Assets.Wallpaper.Scale(g.Width, g.Height);
 
-            // Wait some seconds
-            //Cosmos.HAL.Global.PIT.Wait(10000);
 
 
             // Init SKDE
@@ -142,8 +140,11 @@ namespace SipaaKernel
             // Play the startup sound
             //Audio.Play(MemoryAudioStream.FromWave(Assets.StartupWave));
 
+            // Wait some seconds
+            Cosmos.HAL.Global.PIT.Wait(10000);
+
+
             Console.WriteLine("[OK] SipaaKernel is now initialized!");
-            Console.WriteLine("Now waiting 5 seconds");
 
         }
 
@@ -167,8 +168,8 @@ namespace SipaaKernel
                 }
 
                 g.DrawString(11, 600 - 62, $"{g.GetFPS()} FPS", Font.Fallback, Color.White);
-                //g.DrawString(11, 600 - 31, "Sounds made by GreenSoupDev", Font.Fallback, Color.White);
-                g.DrawFilledRectangle((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, 8, 12, 0, Color.White);
+                //g.DrawString(11, 600 - 31, "Sounds made by GreenSoupDev", Font.Fallback, Color.White)
+                g.DrawImage((int)Sys.MouseManager.X, (int)Sys.MouseManager.Y, Assets.Cursor, true);
                 g.Update();
 
             }
