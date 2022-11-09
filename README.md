@@ -1,5 +1,5 @@
 # SipaaKernel V4
-A new version of SipaaKernel, better!
+A new version of SipaaKernel, better and advanced!
 
 ## 🖥️ Features
 ### Working on real hardware
@@ -11,7 +11,7 @@ Here is the proof
 ### Audio support
 Yes, SipaaKernel supports now the audio! (in wave file)
 
-### A better canvas (not SipaVGA sorry)
+### A better canvas (not SipaVGA)
 This version of SipaaKernel uses the @terminal-cs VBE canvas!
 
 ## ⚠️ Warning
