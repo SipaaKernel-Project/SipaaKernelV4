@@ -20,4 +20,4 @@ https://raphmar2021.github.io/SipaaKernel/
 ## ⚠️ Warning!
 This version of SipaaKernel is in a pre-alpha state.
 
-Yes, it is running on real hardware, but DON'T USE IT AS YOUR MAIN OS, unless you want your PC to be a potato.
+Yes, it is running on real hardware, but DON'T USE IT AS YOUR MAIN OS, unless you want your PC to be a useless expensive box.
