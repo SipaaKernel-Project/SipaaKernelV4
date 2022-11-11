@@ -9,8 +9,10 @@ C’est bizarre de voir un système d’exploitation Cosmos fonctionner sur du m
 
 
 
+
 En voici la preuve
-! SipaaKernel fonctionnant sur du matériel réel (https://github.com/RaphMar2021/SipaaKernelV4/blob/master/sipaakernel_realhardware.jpg?raw=true
+SipaaKernel fonctionnant sur du matériel réel !
+![sipaakernel_realhardware](https://user-images.githubusercontent.com/109924369/201443624-523547f0-4f6d-4d90-9b7e-9feb20c1a9d6.jpg)
 
 ### Prise en charge audio
 Oui, maintenant SipaaKernel prend en charge l’audio avec le système ICH AC97 ! (dans le fichier wave)
