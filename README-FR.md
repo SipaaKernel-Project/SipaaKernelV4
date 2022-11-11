@@ -4,7 +4,7 @@ Est-ce que la 4ème version de SipaaKernel, est meilleure, avancée et plus puis
 
 ## 🖥️ Caractéristiques
 
-### Travailler sur du matériel réel!
+### Travailler sur du hardware réel!
 C’est bizarre de voir un système d’exploitation Cosmos fonctionner sur du matériel réel.
 
 
