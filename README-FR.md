@@ -17,7 +17,7 @@ SipaaKernel fonctionnant sur du matériel réel !
 ### Prise en charge audio
 Oui, maintenant SipaaKernel prend en charge l’audio avec le système ICH AC97 ! (dans le fichier wave)
 
-### Un meilleur canevas (pas SipaVGA)
+### Un meilleur canvas (pas SipaVGA)
 Cette version de SipaaKernel utilise le canevas VBE @terminal-cs !
 
 ### Et plus encore dans la page officielle SipaaKernel!
