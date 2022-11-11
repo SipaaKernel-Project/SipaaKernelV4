@@ -1,5 +1,5 @@
 # SipaaKernel V4
-A new version of SipaaKernel, better and advanced!
+Is the 4th version of SipaaKernel, better, advanced and more powerful!
 
 ## 🖥️ Features
 ### Working on real hardware!
