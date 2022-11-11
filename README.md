@@ -24,5 +24,4 @@ Yes, it is running on real hardware, but DON'T USE IT AS YOUR MAIN OS, unless yo
 
 ## Requeriments
 
-You need the COSMOS DevKit
-Visual Studio 2022
+You need the COSMOS DevKit and Visual Studio 2022 with Extensions Workload
