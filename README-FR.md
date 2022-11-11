@@ -1,23 +1,33 @@
 
 # SipaaKernel V4
-Une nouvelle version de SipaaKernel, en mieux
+Est-ce que la 4ème version de SipaaKernel, est meilleure, avancée et plus puissante!
 
-## 🖥️ Fonctionnalités
-### Fonctionne sur du matériel réel
-C'est bizarre de voir un OS fait avec Cosmos fonctionner sur du matériel réel.
+## 🖥️ Caractéristiques
 
-Voila la preuve
-![SipaaKernel running on real hardware](https://github.com/RaphMar2021/SipaaKernelV4/blob/master/sipaakernel_realhardware.jpg?raw=true)
+### Travailler sur du matériel réel!
+C’est bizarre de voir un système d’exploitation Cosmos fonctionner sur du matériel réel.
 
-### Support de l'audio
-Oui, SipaaKernel supporte maintenant l'audio! (dans le format wave)
 
-### Un canvas mieux (ce n'est pas SipaVGA, désolé)
-Cette version de SipaaKernel utilise le canvas VBE de @terminal-cs!
 
-## ⚠️ Attention
-Cette version de SipaaKernel est en pré-alpha
+En voici la preuve
+! [SipaaKernel fonctionnant sur du matériel réel] (https://github.com/RaphMar2021/SipaaKernelV4/blob/master/sipaakernel_realhardware.jpg?raw=true)
 
-OK, ca fonctionne sur du matériel réel, mais NE L'UTILISER PAS EN TANT QUE SYSTEME D'EXPLOITATION PRINCIPAL.
+### Prise en charge audio
+Oui, maintenant SipaaKernel prend en charge l’audio avec le système ICH AC97 ! (dans le fichier wave)
 
-[1]: URL "https://github.com/RaphMar2021/SipaaKernelV4/blob/master/README.md"
+### Un meilleur canevas (pas SipaVGA)
+Cette version de SipaaKernel utilise le canevas VBE @terminal-cs !
+
+### Et plus encore dans la page officielle SipaaKernel!
+https://raphmar2021.github.io/SipaaKernel/
+
+
+## ⚠️ Attention!
+Cette version de SipaaKernel est dans un état pré-alpha.
+
+Oui, il fonctionne sur du matériel réel, mais NE L’UTILISEZ PAS COMME SYSTÈME D’EXPLOITATION PRINCIPAL, sauf si vous voulez que votre PC soit une boîte coûteuse inutile.
+
+## Exigences
+
+Vous avez besoin de COSMOS DevKit et de Visual Studio 2022 avec charge de travail d’extensions
+
